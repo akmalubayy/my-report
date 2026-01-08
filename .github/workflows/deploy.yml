@@ -42,4 +42,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./deploy_ready/
-          server-dir: public_html/sub.domain.com/ # Masukkan folder tujuan di server Anda
+          server-dir: report.ilogo.id # Masukkan folder tujuan di server Anda

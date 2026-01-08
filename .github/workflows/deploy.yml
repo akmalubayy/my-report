@@ -35,13 +35,9 @@ jobs:
           cp next.config.mjs deploy_ready/
           cp server.js deploy_ready/
 
-      - name: Sync Files to Hosting
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          security: loose
-          local-dir: ./deploy_ready/
-          server-dir: /
+      - name: Install lftp
+        run: sudo apt-get install lftp
+
+      - name: Sync Files via LFTP
+        run: |
+          lftp -e "set ssl:verify-certificate no; open ${{ secrets.FTP_SERVER }}; user ${{ secrets.FTP_USERNAME }} '${{ secrets.FTP_PASSWORD }}'; mirror -R --parallel=5 --exclude-glob .git* --exclude-glob .github* ./deploy_ready/ /; quit"

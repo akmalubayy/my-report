@@ -5,7 +5,7 @@ import { ResponsivePie } from "@nivo/pie";
 import { ResponsiveRadar } from "@nivo/radar";
 import { ResponsiveLine } from "@nivo/line";
 import { ResponsiveFunnel } from "@nivo/funnel";
-import { useReportStore } from "../../store/useReportStore";
+import { useReportStore } from "@/store/useReportStore";
 
 export default function ChartPreview() {
     const { tasks, chartType, title } = useReportStore();
@@ -30,8 +30,6 @@ export default function ChartPreview() {
         },
         grid: { line: { stroke: "#f1f5f9", strokeWidth: 1 } },
     };
-
-    const colors = { scheme: "nivo" as const };
 
     return (
         <div id="chart-preview" className="w-full h-[450px] bg-white p-4 rounded-3xl shadow-sm border border-slate-100 relative group transition-all">

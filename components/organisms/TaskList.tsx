@@ -1,7 +1,9 @@
 "use client";
 
-import { Trash2, Edit3, MessageSquare } from "lucide-react";
-import { useReportStore } from "../../store/useReportStore";
+import { Trash2 } from "lucide-react";
+import { useReportStore } from "@/store/useReportStore";
+import { Card } from "@/components/atoms/Card";
+import { Button } from "@/components/atoms/Button";
 
 export default function TaskList() {
     const { tasks, removeTask } = useReportStore();
@@ -15,9 +17,9 @@ export default function TaskList() {
     return (
         <div className="space-y-3">
             {tasks.map((task) => (
-                <div
+                <Card
                     key={task.id}
-                    className="group flex flex-col p-3 bg-slate-50 border border-slate-100 rounded-xl transition-all hover:border-blue-200 hover:bg-white"
+                    className="flex flex-col p-3 border-slate-100 hover:border-blue-200 hover:bg-white transition-all group"
                 >
                     <div className="flex items-center justify-between gap-3">
                         <div className="flex-1 min-w-0">
@@ -32,14 +34,16 @@ export default function TaskList() {
                                 <span className="text-[10px] font-black text-blue-600">{task.progress}%</span>
                             </div>
                         </div>
-                        <button
+                        <Button
+                            variant="danger"
+                            size="sm"
                             onClick={() => removeTask(task.id)}
-                            className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
+                            className="p-1.5 rounded-lg opacity-60 group-hover:opacity-100"
                         >
                             <Trash2 size={14} />
-                        </button>
+                        </Button>
                     </div>
-                </div>
+                </Card>
             ))}
         </div>
     );

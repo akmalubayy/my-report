@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { Plus, FileText, ChevronRight, BarChart3, Clock, Layout } from "lucide-react";
+import { Plus, FileText, BarChart3, Clock, Layout } from "lucide-react";
+import { Button } from "@/components/atoms/Button";
+import { StatCard } from "@/components/molecules/StatCard";
+import { FeatureCard } from "@/components/molecules/FeatureCard";
 
 export default function Home() {
   return (
@@ -27,12 +30,15 @@ export default function Home() {
             hanya dalam hitungan detik.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/report/new"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-lg font-bold px-8 py-4 rounded-2xl transition-all shadow-xl shadow-blue-900/40 active:scale-95"
-            >
-              <Plus size={24} />
-              Mulai Buat Laporan
+            <Link href="/report/new">
+              <Button
+                variant="primary"
+                size="lg"
+                className="w-full sm:w-auto shadow-xl shadow-blue-900/40"
+              >
+                <Plus size={24} className="mr-2" />
+                Mulai Buat Laporan
+              </Button>
             </Link>
           </div>
         </div>
@@ -63,34 +69,11 @@ export default function Home() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
         <h2 className="text-3xl font-bold text-slate-900 mb-12">Fitur Utama</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-          <Stat icon={<FileText />} label="PDF Export" />
-          <Stat icon={<BarChart3 />} label="5 Nivo Charts" />
-          <Stat icon={<Plus />} label="Unlimited Tasks" />
+          <StatCard icon={<FileText />} label="PDF Export" />
+          <StatCard icon={<BarChart3 />} label="5 Nivo Charts" />
+          <StatCard icon={<Plus />} label="Unlimited Tasks" />
         </div>
       </div>
     </main>
-  );
-}
-
-function FeatureCard({ icon, title, desc }: { icon: any; title: string; desc: string }) {
-  return (
-    <div className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 transition-all hover:translate-y-[-4px]">
-      <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-6">
-        {icon}
-      </div>
-      <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
-      <p className="text-slate-500 leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-function Stat({ icon, label }: { icon: any; label: string }) {
-  return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="p-4 bg-slate-50 rounded-2xl text-slate-600">
-        {icon}
-      </div>
-      <span className="font-semibold text-slate-700">{label}</span>
-    </div>
   );
 }

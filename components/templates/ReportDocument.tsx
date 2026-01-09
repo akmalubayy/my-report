@@ -154,7 +154,7 @@ interface ReportPDFProps {
     chartImage?: string;
 }
 
-export const ReportPDF = ({ title, tasks, chartImage }: ReportPDFProps) => {
+export const ReportDocument = ({ title, tasks, chartImage }: ReportPDFProps) => {
     const currentDate = new Date().toLocaleDateString("id-ID", {
         day: "numeric",
         month: "long",

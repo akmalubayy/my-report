@@ -23,12 +23,10 @@ export default function NewReportPage() {
         setIsExporting(true);
 
         try {
-            // 1. Capture the chart as an image
             let chartImage = undefined;
             const chartElement = document.getElementById("chart-preview");
 
             if (chartElement) {
-                // Wait for any Nivo animations to settle
                 await new Promise(r => setTimeout(r, 500));
 
                 const canvas = await html2canvas(chartElement, {

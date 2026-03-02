@@ -54,7 +54,7 @@ export default function Home() {
           />
           <FeatureCard
             icon={<Clock className="text-emerald-500" />}
-            title="Sangat Cepat"
+            title="Cepat"
             desc="Cukup isi progress, lalu download sebagai PDF instan."
           />
           <FeatureCard
